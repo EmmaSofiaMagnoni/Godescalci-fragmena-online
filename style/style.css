@@ -213,7 +213,11 @@ body {margin: 0;}
     .catalogo_carmi a {color: #800000; text-decoration: none;}
     .catalogo_carmi a:hover {color: #000000;}
 
-
+/*Numeri ai versi*/
+.linenumber {
+position:absolute;
+transform:translateX(-200%);
+}
 
 
 
