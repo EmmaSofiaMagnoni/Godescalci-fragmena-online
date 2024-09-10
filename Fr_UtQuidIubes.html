@@ -211,7 +211,36 @@
 
 		</script>
 
+<script>
+      var testo = document.getElementById("testo");
 
+      // Teniamo traccia delle righe che abbiamo visto
+      var counter = 1;
+      
+      // Prendiamo il testo, e andiamo a controllare tutti i tag p
+      for(let paragrafo of testo.getElementsByTagName("p")){
+
+        //Per ogni tag p, andiamo a prendere tutto il contenuto e dividiamo ogni volta che si và a capo con <br>
+        currentArray=paragrafo.innerHTML.split("<br>");
+
+        //Andiamo a controllare questo Array con spezzettato con tutti i versi che vanno a capo e andiamo a contare i versi
+        for(var i=0; i<currentArray.length ; i++){
+
+          // Se il verso che stiamo controllando è su una riga che è multiplo di 5, andiamo a inserire dentro uno span il numero della riga, con la classe che lo rende fluttuante verso al sinistra
+          if(counter % 5 == 0){
+            currentArray[i] = "<span class='linenumber'>" + counter + ". " + "</span>" + currentArray[i];
+          }
+
+          // Se il verso non è vuoto (quindi NON è una riga vuota), incrementiamo il numero di righe
+          if(currentArray[i] != ""){
+            counter++;
+          }
+        }
+        
+        //Andiamo a rimpiazzare il testo dentro il p attuale con il nostro array con aggiunti i numeri delle righe
+        paragrafo.innerHTML = currentArray.join("<br>")
+      };
+    </script>
 
 
 	</body>
